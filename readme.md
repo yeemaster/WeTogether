@@ -4,7 +4,7 @@
 
 ## 项目描述
 1. 使用了React-Native 0.44.0版本。遵循ES6语法,能同时运行在Android、iOS环境下。
-2. 涵盖了图文、音乐、电影、咨询四大块.
+2. 涵盖了图文、音乐、电影、资讯四大块.
 3. 数据来源有 one 一个，百度音乐，猫眼，知乎日报。
 
 ## APP截图
@@ -17,7 +17,7 @@
 ![图7](./screenshots/7.gif) 
 
 ## 整体思路
-1. redux 管理数据流，react-navigation 路由。 项目文件的放置采取就近原则。
+1. redux 管理数据流，react-navigation 路由，组件化开发，项目文件的放置采取就近原则。
 
 ## 安装
 
@@ -50,4 +50,4 @@ $ react-native run-ios or react-native run-android
 12. [react-native-htmlview](https://github.com/jsdf/react-native-htmlview)
 13. [react-native-app-intro](https://github.com/FuYaoDe/react-native-app-intro)
 
-##该项目不定期更新中.后期目标:优化完善该项目:加上分享，相机和二维码功能。
+## 该项目不定期更新中.后期目标:优化完善该项目:加上分享，相机和二维码功能。
