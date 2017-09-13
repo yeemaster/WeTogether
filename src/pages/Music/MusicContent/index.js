@@ -42,7 +42,7 @@ class MusicSongsItem extends Component{
 		let {handleMusicInfo,getMusicSongPlayerPause,getMusicSongPlayerStart,getMusicSongPlayerReset} = this.props;
         console.log('123');
 
-		if(handleMusicInfo.MusicPlayer.pause){
+		if(handleMusicInfo.musicPlayer.pause){
              getMusicSongPlayerStart();
 		}else{
 			 getMusicSongPlayerPause();
@@ -51,9 +51,9 @@ class MusicSongsItem extends Component{
 
 	render(){
 		let {handleMusicInfo,navigation} = this.props;
-		let songsItem = this.props.handleMusicInfo.MusicSongsDetailList.data[navigation.state.params.id];
+		let songsItem = this.props.handleMusicInfo.musicSongsDetailList.data[navigation.state.params.id];
 
-        let videoPlayerBtn = handleMusicInfo.MusicPlayer.pause ? require('../../../resource/Image/Music/Pause.png') : require('../../../resource/Image/Music/Play.png');
+        let videoPlayerBtn = handleMusicInfo.musicPlayer.pause ? require('../../../resource/Image/Music/Pause.png') : require('../../../resource/Image/Music/Play.png');
 
 		return(
           <View style={{marginTop:-20,height:80,width:size.width/10*9,backgroundColor:'#fff',borderWidth:1,borderColor:'#999'}}>
@@ -95,19 +95,19 @@ class MusicContent extends Component{
 
 	render(){
 		let {handleMusicInfo,navigation} = this.props;
-		let songsItem = this.props.handleMusicInfo.MusicSongsDetailList.data[navigation.state.params.id];
+		let songsItem = this.props.handleMusicInfo.musicSongsDetailList.data[navigation.state.params.id];
 
         let songsInfo = null;
         
         console.log('content');
         console.log(handleMusicInfo);
 
-        let MusicMain = handleMusicInfo.MusicSongsDetailStatus.isFetching ? 
+        let MusicMain = handleMusicInfo.musicSongsDetailStatus.isFetching ?
         <PageLoading /> :
-        (handleMusicInfo.MusicSongsDetailList && handleMusicInfo.MusicSongsDetailList.fetchStatus && handleMusicInfo.MusicSongsDetailList.data[navigation.state.params.id]) ? 
+        (handleMusicInfo.musicSongsDetailList && handleMusicInfo.musicSongsDetailList.fetchStatus && handleMusicInfo.musicSongsDetailList.data[navigation.state.params.id]) ?
 		<ScrollView showsVerticalScrollIndicator={false} style={{flex:1,backgroundColor:'#fff'}}>
 		    <View style={{flex:1,alignItems:'center',backgroundColor:'#fff'}}>
-				   <Image source={{uri:handleMusicInfo.MusicSongsDetailList.data[navigation.state.params.id].songinfo.pic_big}} style={{height:size.height/3*1,width:size.width}}/>
+				   <Image source={{uri:handleMusicInfo.musicSongsDetailList.data[navigation.state.params.id].songinfo.pic_big}} style={{height:size.height/3*1,width:size.width}}/>
 				   <MusicSongsItem {...this.props}/>
 				   <View style={{alignItems:'flex-start',justifyContent:'center',width:size.width,height:50,paddingLeft:20,borderBottomWidth:1,borderStyle:'solid',borderColor:'#999'}}>
 				   	    <Text>文</Text>
@@ -119,7 +119,7 @@ class MusicContent extends Component{
 				   </View>
 		    </View>
           	<MusicPlayer {...this.props} songsPlayerList={[{'song_id': songsItem.songinfo.song_id}]} position={{top:40,right:10}}/>
-		</ScrollView>  : <View><Text>暂无数据</Text></View>      
+		</ScrollView>  : <View><Text>暂无数据</Text></View>
 
 		return MusicMain;
 	}

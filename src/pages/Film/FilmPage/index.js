@@ -101,7 +101,7 @@ class FilmPage extends Component{
     _renderFooter(){
        let {handleFilmsListInfo} = this.props;
        return(
-          <LoadMoreData isMoreData={handleFilmsListInfo.FilmPageStatus.isFetching} />
+          <LoadMoreData isMoreData={handleFilmsListInfo.filmPageStatus.isFetching} />
        )
     }
 
@@ -118,12 +118,12 @@ class FilmPage extends Component{
     let dataSource = ds.cloneWithRows([]);
     let hotFilmData = [],SwiperData = [],hotFilmView = null;
     
-    if(handleFilmsListInfo.FilmPageList && handleFilmsListInfo.FilmPageList.data){
+    if(handleFilmsListInfo.filmPageList && handleFilmsListInfo.filmPageList.data){
 
-        dataSource = ds.cloneWithRows(handleFilmsListInfo.FilmPageList.data);    
+        dataSource = ds.cloneWithRows(handleFilmsListInfo.filmPageList.data);
 
-        hotFilmData = [...handleFilmsListInfo.FilmPageList.data].reverse().slice(0,10);
-        SwiperData =  handleFilmsListInfo.FilmPageList.data.slice(0,4);
+        hotFilmData = [...handleFilmsListInfo.filmPageList.data].reverse().slice(0,10);
+        SwiperData =  handleFilmsListInfo.filmPageList.data.slice(0,4);
         hotFilmView = hotFilmData.map((value,key)=>{
            return (
                <TouchableOpacity style={{width:75,height:115,marginRight:10}} key={key} onPress={()=>{navigation.dispatch({type:'FilmDetail',payload:{id:value.id}})}}>

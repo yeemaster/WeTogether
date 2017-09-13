@@ -109,7 +109,7 @@ export default class MusicPlayer extends Component{
         let {handleMusicInfo,getMusicSongPlayerPause,getMusicSongPlayerStart,getMusicSongPlayerReset} = this.props;
         let that = this;
 
-        if(handleMusicInfo.MusicPlayer.pause){
+        if(handleMusicInfo.musicPlayer.pause){
            img=require('../../../resource/Image/Music/Play.png'); 
            getMusicSongPlayerStart();
         }else{
@@ -139,7 +139,7 @@ export default class MusicPlayer extends Component{
 
          let {handleMusicInfo,songsPlayerList,getMusicSongPlayerDetail} = this.props;
          if(index < songsPlayerList.length){
-              let songItem = handleMusicInfo.MusicSongsDetailList.data[songsPlayerList[index].song_id];
+              let songItem = handleMusicInfo.musicSongsDetailList.data[songsPlayerList[index].song_id];
               if(songItem){
                 that.setState({
                    songId : songsPlayerList[index].song_id, 
@@ -147,7 +147,7 @@ export default class MusicPlayer extends Component{
                    songTime : songItem.bitrate.file_duration
                 }
               );
-              that.dealLyrContent(handleMusicInfo.MusicSongsDetailList.lryData[songsPlayerList[index].song_id]);
+              that.dealLyrContent(handleMusicInfo.musicSongsDetailList.lryData[songsPlayerList[index].song_id]);
             }else{
               getMusicSongPlayerDetail(songsPlayerList[index].song_id,function(data,lryData){
                   
@@ -206,7 +206,7 @@ export default class MusicPlayer extends Component{
     rotateImg(){
             let that = this;
             let {handleMusicInfo} = this.props;
-            console.log(handleMusicInfo.MusicPlayer.pause);
+            console.log(handleMusicInfo.musicPlayer.pause);
             this.rotateValue.setValue(0);
             musicImgAnimated = Animated.timing(this.rotateValue,{
                 toValue : 1,
@@ -214,7 +214,7 @@ export default class MusicPlayer extends Component{
                 easing : Easing.linear
             })
             musicImgAnimated.start(()=>{
-              if(handleMusicInfo.MusicPlayer.pause){
+              if(handleMusicInfo.musicPlayer.pause){
                  that.rotateImgStart = false;
               }else{
                  that.rotateImg();
@@ -314,7 +314,7 @@ export default class MusicPlayer extends Component{
         let {handleMusicInfo} = this.props;
         let playStatusImg = require('../../../resource/Image/Music/Play.png'); 
 
-        // if(!handleMusicInfo.MusicPlayer.pause && !this.rotateImgStart){
+        // if(!handleMusicInfo.musicPlayer.pause && !this.rotateImgStart){
         //      this.rotateImgStart = true;
         //      this.rotateImg();
         //   }
@@ -328,7 +328,7 @@ export default class MusicPlayer extends Component{
         })
 
 
-        if(handleMusicInfo.MusicPlayer.pause){
+        if(handleMusicInfo.musicPlayer.pause){
            playStatusImg=require('../../../resource/Image/Music/Pause.png'); 
         }else{
            playStatusImg=require('../../../resource/Image/Music/Play.png');
@@ -344,7 +344,7 @@ export default class MusicPlayer extends Component{
                       // source={require('../../../resource/MP3/taohua.mp3')}
                       ref='video'
                       volume={1.0}
-                      paused={handleMusicInfo.MusicPlayer.pause}
+                      paused={handleMusicInfo.musicPlayer.pause}
                       onProgress={(e) => this._onProgress(e)}
                       onLoad={(e) => this._onLoad(e)}
                       playInBackground={true}

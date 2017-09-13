@@ -1,72 +1,74 @@
 import {apiUrl} from '../../util/ApiUrl.js'
 import {FetchUtil} from '../../util/FetchData.js'
-import {createActions,createAction,handleActions,handleAction} from 'redux-actions'
+import {createAction, handleActions} from 'redux-actions'
 
 //actions
-
-const getHomeOneListStart = createAction('GET_HOME_ONE_LIST_START');
-const getHomeOneListSuccess = createAction('GET_HOME_ONE_LIST_SUCCESS');
+const gethomeOneListStart = createAction('GET_HOME_ONE_LIST_START');
+const gethomeOneListSuccess = createAction('GET_HOME_ONE_LIST_SUCCESS');
 const getHomeOneFail = createAction('GET_HOME_ONE_LIST_FAIL');
 
-
-
-export function getHomeOneListInfo(time){
-  return (dispatch,getState) => {
-    dispatch(getHomeOneListStart());
-    FetchUtil.get(apiUrl.API_HOMEONE_URL + time)
-           .then((data)=>{
-                 dispatch(getHomeOneListSuccess({HomeOneListInfo : data.data}));
-           },(error)=>{
-                 dispatch(getHomeOneListFail());
-           })
-  }
+export function gethomeOneListInfo(time) {
+    return (dispatch, getState) => {
+        dispatch(gethomeOneListStart());
+        FetchUtil.get(apiUrl.API_HOMEONE_URL + time)
+            .then((data) => {
+                dispatch(gethomeOneListSuccess({homeOneListInfo: data.data}));
+            }, (error) => {
+                dispatch(gethomeOneListFail());
+            })
+    }
 }
+
 
 //reducers
-
 const defaultState = {
-   HomeOneStatus : {
-      isFetching : false
-   },
-   HomeOneList : {
-      data : [],
-      fetchStatus : false
-   }
+    homeOneStatus: {
+        isFetching: false
+    },
+    homeOneList: {
+        data: [],
+        fetchStatus: false
+    }
 }
 
-export const handleHomeOneListInfo = handleActions({
-  'GET_HOME_ONE_LIST_START' : (state,action) => {return {
-       ...state,
-       ...{
-         HomeOneStatus : {
-            isFetching : true
-         }
-       }
-  }},
-  'GET_HOME_ONE_LIST_SUCCESS' : (state,action) => {
-     return {
-       ...state,
-       ...{
-         HomeOneList : {
-            data :  action.payload.HomeOneListInfo,
-            fetchStatus : true
-         },
-         HomeOneStatus : {
-            isFetching : false
-         }
-       }
-  }},
-  'GET_HOME_ONE_LIST_FAIL' : (state,action) => ({
-       ...state,
-       ...{
-         HomeOneStatus : {
-            isFetching : false
-         }
-       }
-  })
-},defaultState);
+export const handlehomeOneListInfo = handleActions({
+    'GET_HOME_ONE_LIST_START': (state, action) => {
+        return {
+            ...state,
+            ...{
+                homeOneStatus: {
+                    isFetching: true
+                }
+            }
+        }
+    },
+    'GET_HOME_ONE_LIST_SUCCESS': (state, action) => {
+        return {
+            ...state,
+            ...{
+                homeOneList: {
+                    data: action.payload.homeOneListInfo,
+                    fetchStatus: true
+                },
+                homeOneStatus: {
+                    isFetching: false
+                }
+            }
+        }
+    },
+    'GET_HOME_ONE_LIST_FAIL': (state, action) => ({
+        ...state,
+        ...{
+            homeOneStatus: {
+                isFetching: false
+            }
+        }
+    })
+}, defaultState);
 
 
+
+// 主页mock数据调试
 
 // import {apiUrl} from '../../util/ApiUrl.js'
 // import {FetchUtil} from '../../util/FetchData.js'
@@ -76,16 +78,15 @@ export const handleHomeOneListInfo = handleActions({
 
 // //actions
 
-// const getHomeOneListStart = createAction('GET_HOME_ONE_LIST_START');
-// const getHomeOneListSuccess = createAction('GET_HOME_ONE_LIST_SUCCESS');
-// const getHomeOneListFail = createAction('GET_HOME_ONE_LIST_FAIL');
+// const gethomeOneListStart = createAction('GET_HOME_ONE_LIST_START');
+// const gethomeOneListSuccess = createAction('GET_HOME_ONE_LIST_SUCCESS');
+// const gethomeOneListFail = createAction('GET_HOME_ONE_LIST_FAIL');
 
 
-
-// export function getHomeOneListInfo(){
+// export function gethomeOneListInfo(){
 //   return (dispatch,getState) => {
-//     dispatch(getHomeOneListStart());
-//     dispatch(getHomeOneListSuccess({HomeOneListInfo : mockApi.apiUrl.API_HOMEONE_URL.data}));
+//     dispatch(gethomeOneListStart());
+//     dispatch(gethomeOneListSuccess({homeOneListInfo : mockApi.apiUrl.API_HOMEONE_URL.data}));
 //   }
 // }
 
@@ -93,20 +94,20 @@ export const handleHomeOneListInfo = handleActions({
 // //reducers
 
 // const defaultState = {
-//    HomeOneStatus : {
+//    homeOneStatus : {
 //       isFetching : false
 //    },
-//    HomeOneList : {
+//    homeOneList : {
 //       data : [],
 //       fetchStatus : false
 //    }
 // }
 
-// export const handleHomeOneListInfo = handleActions({
+// export const handlehomeOneListInfo = handleActions({
 //   'GET_HOME_ONE_LIST_START' : (state,action) => {return {
 //        ...state,
 //        ...{
-//          HomeOneStatus : {
+//          homeOneStatus : {
 //             isFetching : true
 //          }
 //        }
@@ -115,11 +116,11 @@ export const handleHomeOneListInfo = handleActions({
 //      return {
 //        ...state,
 //        ...{
-//          HomeOneList : {
-//             data :  action.payload.HomeOneListInfo,
+//          homeOneList : {
+//             data :  action.payload.homeOneListInfo,
 //             fetchStatus : true
 //          },
-//          HomeOneStatus : {
+//          homeOneStatus : {
 //             isFetching : false
 //          }
 //        }
@@ -127,7 +128,7 @@ export const handleHomeOneListInfo = handleActions({
 //   'GET_HOME_ONE_LIST_FAIL' : (state,action) => ({
 //        ...state,
 //        ...{
-//          HomeOneStatus : {
+//          homeOneStatus : {
 //             isFetching : false
 //          }
 //        }

@@ -63,7 +63,7 @@ class NewsList extends Component{
 	_renderFooter(){
        const {handleThemesListInfo} = this.props;     
        return(
-          <LoadMoreData isMoreData={handleThemesListInfo.NewPageItemStatus.isFetching} />
+          <LoadMoreData isMoreData={handleThemesListInfo.newPageItemStatus.isFetching} />
        )
 	}
 
@@ -87,8 +87,8 @@ class NewsList extends Component{
     });
     let dataSource = ds.cloneWithRows([]);
     
-    if(handleThemesListInfo.NewPageItemList && handleThemesListInfo.NewPageItemList.data[newsTabItemContent.id]){
-        dataSource = ds.cloneWithRows(handleThemesListInfo.NewPageItemList.data[newsTabItemContent.id].stories);    
+    if(handleThemesListInfo.newPageItemList && handleThemesListInfo.newPageItemList.data[newsTabItemContent.id]){
+        dataSource = ds.cloneWithRows(handleThemesListInfo.newPageItemList.data[newsTabItemContent.id].stories);
     }
 
 		return(

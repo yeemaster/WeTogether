@@ -35,7 +35,7 @@ const size = {
 
 class SonsDetailPage extends Component{
   render(){
-    let {albumInfo} = this.props.handleMusicInfo.MusicAlbumDetail.data;
+    let {albumInfo} = this.props.handleMusicInfo.musicAlbumDetail.data;
     return(
            <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:'#fff',padding:15}}><Text>{albumInfo.info}</Text></ScrollView>
     )
@@ -76,12 +76,12 @@ class SongsListPage extends Component{
     _renderFooter(){
          let {handleMusicInfo} = this.props;     
          return(
-            <LoadMoreData isMoreData={handleMusicInfo.MusicAlbumDetailStatus.isFetching} />
+            <LoadMoreData isMoreData={handleMusicInfo.musicAlbumDetailStatus.isFetching} />
          )
     }
 
    render(){
-        let {songlist} = this.props.handleMusicInfo.MusicAlbumDetail.data;
+        let {songlist} = this.props.handleMusicInfo.musicAlbumDetail.data;
 
         let ds = new ListView.DataSource({
            rowHasChanged : (r1,r2)=>(r1!==r2)
@@ -125,12 +125,12 @@ class MusicDetail extends Component{
      let {handleMusicInfo} = this.props;
      console.log(handleMusicInfo);
 
-     let musicDetailWrap = (!handleMusicInfo.MusicAlbumDetailStatus.isFetching && handleMusicInfo.MusicAlbumDetail.fetchStatus) ? (
+     let musicDetailWrap = (!handleMusicInfo.musicAlbumDetailStatus.isFetching && handleMusicInfo.musicAlbumDetail.fetchStatus) ? (
           <View style={{flex:1,backgroundColor:'#fff'}}>
               
-              <Image style={{height:size.height/3,width:size.width,justifyContent:'flex-end'}} source={{uri: handleMusicInfo.MusicAlbumDetail.data.albumInfo.pic_big}}>
+              <Image style={{height:size.height/3,width:size.width,justifyContent:'flex-end'}} source={{uri: handleMusicInfo.musicAlbumDetail.data.albumInfo.pic_big}}>
                 <View style={{backgroundColor:'rgba(0,0,0,0.5)',height:50,width:size.width,alignItems:'center',justifyContent:'center'}}>
-                   <Text style={{backgroundColor:'transparent',color:'#fff',marginVertical:10,fontSize:16}}>{handleMusicInfo.MusicAlbumDetail.data.albumInfo.title}</Text>
+                   <Text style={{backgroundColor:'transparent',color:'#fff',marginVertical:10,fontSize:16}}>{handleMusicInfo.musicAlbumDetail.data.albumInfo.title}</Text>
                 </View> 
               </Image>
 
@@ -147,7 +147,7 @@ class MusicDetail extends Component{
               </ScrollableTabView>
               
 
-              <MusicPlayer {...this.props} songsPlayerList={handleMusicInfo.MusicAlbumDetail.data.songlist} position={{top:40,right:10}}/>
+              <MusicPlayer {...this.props} songsPlayerList={handleMusicInfo.musicAlbumDetail.data.songlist} position={{top:40,right:10}}/>
 
           </View>  
      ) : <PageLoading />;

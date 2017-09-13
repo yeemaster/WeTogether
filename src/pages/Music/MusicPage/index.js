@@ -27,7 +27,7 @@ import {
 
 import LoadMoreData from '../../../component/LoadMoreData.js'
 import PageLoading from '../../../component/PageLoading.js'
-import MusicPlayer from '../MusicPlayer/index.js'
+//import musicPlayer from '../MusicPlayer/index.js'
 import {AlertUtil} from '../../../util/AlertUtil.js'
 
 const size = {
@@ -117,7 +117,7 @@ class RecommendPage extends Component{
     _renderFooter(){
          let {handleMusicInfo} = this.props;     
          return(
-            <LoadMoreData isMoreData={handleMusicInfo.MusicRecommendStatus.isFetching} />
+            <LoadMoreData isMoreData={handleMusicInfo.musicRecommendStatus.isFetching} />
          )
     }
 
@@ -144,12 +144,12 @@ class RecommendPage extends Component{
         let dataSource = ds.cloneWithRows([]);
         let recommendSongs = [];
         
-        if(handleMusicInfo.MusicRecommendList && handleMusicInfo.MusicRecommendList.fetchStatus){
-            dataSource = ds.cloneWithRows(handleMusicInfo.MusicRecommendList.data.MusicGoldList.song_list);  
-            recommendSongs = handleMusicInfo.MusicRecommendList.data.MusicAlbumList.albumlist;
+        if(handleMusicInfo.musicRecommendList && handleMusicInfo.musicRecommendList.fetchStatus){
+            dataSource = ds.cloneWithRows(handleMusicInfo.musicRecommendList.data.musicGoldList.song_list);
+            recommendSongs = handleMusicInfo.musicRecommendList.data.musicAlbumList.albumlist;
         }        
 
-        let recommendPageMain =  handleMusicInfo.MusicRecommendStatus.isFetching ? (<PageLoading />)
+        let recommendPageMain =  handleMusicInfo.musicRecommendStatus.isFetching ? (<PageLoading />)
                    : 
             (
                 <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor:'#fff'}}>
@@ -214,7 +214,7 @@ class SongsListPage extends Component{
   _renderFooter(){
        const {handleMusicInfo} = this.props;     
        return(
-          <LoadMoreData isMoreData={handleMusicInfo.MusicPageStatus.isFetching} />
+          <LoadMoreData isMoreData={handleMusicInfo.musicPageStatus.isFetching} />
        )
   }
 
@@ -237,11 +237,11 @@ class SongsListPage extends Component{
         });
         let dataSource = ds.cloneWithRows([]);
         
-        if(handleMusicInfo.MusicPageList && handleMusicInfo.MusicPageList.fetchStatus){
-            dataSource = ds.cloneWithRows(handleMusicInfo.MusicPageList.data);    
+        if(handleMusicInfo.musicPageList && handleMusicInfo.musicPageList.fetchStatus){
+            dataSource = ds.cloneWithRows(handleMusicInfo.musicPageList.data);
         }
 
-        // console.log(handleMusicInfo.MusicPageList);
+        // console.log(handleMusicInfo.musicPageList);
 
       return(
          <ListView
@@ -278,15 +278,15 @@ class MusicPage extends Component{
         let songid = '',songsItem=null,musicPlayerWrap=null;
 
 
-        if(handleMusicInfo.MusicRecommendList && 
-           handleMusicInfo.MusicRecommendList.fetchStatus &&
-           handleMusicInfo.MusicRecommendList.data.MusicGoldList.song_list.length){
+        if(handleMusicInfo.musicRecommendList &&
+           handleMusicInfo.musicRecommendList.fetchStatus &&
+           handleMusicInfo.musicRecommendList.data.musicGoldList.song_list.length){
           
               musicPlayerWrap = (
                      <View>
                        {
                           // <View>
-                          //    <MusicPlayer {...this.props} songsPlayerList={handleMusicInfo.MusicRecommendList.data.MusicGoldList.song_list}/>
+                          //    <musicPlayer {...this.props} songsPlayerList={handleMusicInfo.musicRecommendList.data.musicGoldList.song_list}/>
                           // </View>
                        }
                      </View>

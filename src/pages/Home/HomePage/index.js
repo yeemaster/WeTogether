@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {getHomeOneListInfo} from '../redux.js'
+import {gethomeOneListInfo} from '../redux.js'
 
 import PageLoading from '../../../component/PageLoading.js'
 import {AlertUtil} from '../../../util/AlertUtil.js'
@@ -71,8 +71,8 @@ class HomePage extends Component{
   }
 
   componentDidMount(){
-       const {handleHomeOneListInfo,navigation,getHomeOneListInfo} = this.props;
-       getHomeOneListInfo(this.state.nowMonthDay);    
+       const {handlehomeOneListInfo,navigation,gethomeOneListInfo} = this.props;
+       gethomeOneListInfo(this.state.nowMonthDay);
   }
 
 
@@ -85,9 +85,9 @@ class HomePage extends Component{
 
   render(){
 
-    const {handleHomeOneListInfo,navigation,getHomeOneListInfo} = this.props;
+    const {handlehomeOneListInfo,navigation,gethomeOneListInfo} = this.props;
    
-    console.log(handleHomeOneListInfo);
+    console.log(handlehomeOneListInfo);
 
 
     let ds =  new ViewPager.DataSource({
@@ -95,13 +95,13 @@ class HomePage extends Component{
     });
     let dataSource = ds.cloneWithPages([]);
 
-    if(handleHomeOneListInfo.HomeOneList && handleHomeOneListInfo.HomeOneList.data){
-        dataSource = ds.cloneWithPages(handleHomeOneListInfo.HomeOneList.data); 
+    if(handlehomeOneListInfo.homeOneList && handlehomeOneListInfo.homeOneList.data){
+        dataSource = ds.cloneWithPages(handlehomeOneListInfo.homeOneList.data);
     }
 
 
     return(
-      (!handleHomeOneListInfo.HomeOneStatus && handleHomeOneListInfo.HomeOneList.data) ? <PageLoading /> : (
+      (!handlehomeOneListInfo.homeOneStatus && handlehomeOneListInfo.homeOneList.data) ? <PageLoading /> : (
             <View style={styles.container} showsVerticalScrollIndicator={false}>
 
               <View style={{justifyContent:'center',alignItems:'center',marginVertical: 20}}>
@@ -137,13 +137,13 @@ const styles = StyleSheet.create({
 
 const mapActionCreators = (dispatch) => {
   return {
-     getHomeOneListInfo : bindActionCreators(getHomeOneListInfo,dispatch)
+     gethomeOneListInfo : bindActionCreators(gethomeOneListInfo,dispatch)
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-     handleHomeOneListInfo : state.handleHomeOneListInfo
+     handlehomeOneListInfo : state.handlehomeOneListInfo
   }
 }
 

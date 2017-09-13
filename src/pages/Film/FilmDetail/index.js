@@ -17,7 +17,7 @@ import PageLoading from '../../../component/PageLoading.js'
 
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {getFilmDetailData} from '../redux.js'
+import {getfilmDetailData} from '../redux.js'
 import ScrollableTabView,{DefaultTabBar} from 'react-native-scrollable-tab-view'
 import HtmlShowView from '../../../component/HtmlShowView.js'
 
@@ -135,9 +135,9 @@ class FilmDetail extends Component{
 	}
 
 	componentWillMount(){
-		let {getFilmDetailData,navigation} = this.props;
+		let {getfilmDetailData,navigation} = this.props;
 		console.log(navigation.state.params.id);
-		getFilmDetailData(navigation.state.params.id);
+		getfilmDetailData(navigation.state.params.id);
 	}
 
 	render(){
@@ -147,8 +147,8 @@ class FilmDetail extends Component{
 	    const flexRemaining = (1 - this.getCurrentTimePercentage()) * 100;
 
         console.log(handleFilmsListInfo);
-// uri:handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data.MovieDetailModel.vd}
-        let filmDetailWrap = (!handleFilmsListInfo.FilmDetailStatus.isFetching && handleFilmsListInfo.FilmDetailData.fetchStatus && handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id]) ?
+// uri:handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data.MovieDetailModel.vd}
+        let filmDetailWrap = (!handleFilmsListInfo.filmDetailStatus.isFetching && handleFilmsListInfo.filmDetailData.fetchStatus && handleFilmsListInfo.filmDetailData.data[navigation.state.params.id]) ?
         (
 			<View style={styles.container}>
 
@@ -159,9 +159,9 @@ class FilmDetail extends Component{
 					videoWidth={size.width}
 					videoHeight={size.height/3}
 					// duration={30}
-					thumbnail={{uri:handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data.MovieDetailModel.img}}
-					video={{uri:handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data.MovieDetailModel.vd}}
-					duration={handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data.MovieDetailModel.dur}
+					thumbnail={{uri:handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data.MovieDetailModel.img}}
+					video={{uri:handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data.MovieDetailModel.vd}}
+					duration={handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data.MovieDetailModel.dur}
 				/>
 
 	            <ScrollableTabView
@@ -172,8 +172,8 @@ class FilmDetail extends Component{
 		              tabBarActiveTextColor='#FF0000'
 		              tabBarTextStyle={{fontSize: 14}}
 		              >
-		              <View tabLabel='视频信息'><FilmInfoBlock handleFilmsListInfo={handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data}/></View>
-		              <View tabLabel='评论'><CommentInfoBlock handleFilmsListInfo={handleFilmsListInfo.FilmDetailData.data[navigation.state.params.id].data}/></View>
+		              <View tabLabel='视频信息'><FilmInfoBlock handleFilmsListInfo={handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data}/></View>
+		              <View tabLabel='评论'><CommentInfoBlock handleFilmsListInfo={handleFilmsListInfo.filmDetailData.data[navigation.state.params.id].data}/></View>
 		        </ScrollableTabView>
 			</View>
         ) : <PageLoading />
@@ -221,7 +221,7 @@ var styles = StyleSheet.create({
 
 const mapActionCreators = (dispatch) => {
   return {
-     getFilmDetailData : bindActionCreators(getFilmDetailData,dispatch)
+     getfilmDetailData : bindActionCreators(getfilmDetailData,dispatch)
   }
 }
 

@@ -11,7 +11,7 @@ export const apiUrl = {
     'API_MUSICALBUMLIST_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?from=webapp_music&method=baidu.ting.artist.getAlbumList&format=json&order=1&tinguid=7994&offset=0&limits=6',
     // 'API_MUSICALBUMLIST_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?from=qianqian&version=2.1.0&method=baidu.ting.plaza.getRecommendAlbum&format=json&offset=0&limit=6',
     'API_MUSICGOLDLIST_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?format=json&calback=&from=webapp_music&method==baidu.ting.billboard.billList&type=1&size=20&offset=0',
-    'API_MUSICALBUMDETAIL_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.6.5.0&method=baidu.ting.album.getAlbumInfo&format=json&album_id=',
+    'API_musicAlbumDetail_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?from=android&version=5.6.5.0&method=baidu.ting.album.getAlbumInfo&format=json&album_id=',
     'API_MUSICLRY_URL' : 'http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.song.lry&songid=',
     'API_HOMEONE_URL' : 'http://v3.wufazhuce.com:8000/api/hp/bymonth/'
 }
